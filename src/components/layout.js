@@ -4,15 +4,17 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+import "../styles/index.scss"
 
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import Footer from './footer'
+import SEO from './seo'
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,27 +27,39 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <SEO />
+      <Header />
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              { props.title }
+            </h1>
+            {
+              props.subtitle ?
+                <h2 class="subtitle">
+                  { props.subtitle }
+                </h2>
+              : null
+            }
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div className="content">
+            { props.children }
+          </div>
+        </div>
+      </section>
+      <Footer />
     </>
   )
 }
 
 Layout.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 

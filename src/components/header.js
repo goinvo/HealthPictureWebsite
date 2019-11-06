@@ -1,35 +1,60 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
+import Link from './link'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuOpen: false
+    }
+  }
+
+  toggleMenu = () => {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  render() {
+    return (
+      <header>
+        <nav className="navbar is-spaced" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
+            <Link className="navbar-item" to="/">
+              Health Picture
+            </Link>
+
+            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded={ this.state.menuOpen ? true : false } onClick={ this.toggleMenu }>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div className={`navbar-menu ${ this.state.menuOpen ? 'is-active' : ''}`}>
+            <div className="navbar-end">
+              <Link to='/' className="navbar-item is-primary">
+                Home
+              </Link>
+              <Link to='/about' className="navbar-item">
+                About
+              </Link>
+              <Link to='/design-strategy' className="navbar-item">
+                Design Strategy
+              </Link>
+              <Link to='/implementation' className="navbar-item">
+                Implementation
+              </Link>
+              <Link to='/join' className="navbar-item">
+                Join
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </header>
+    )
+  }
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

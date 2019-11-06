@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Health Picture | Seeing all your health, anywhere, anytime.`,
+    description: `An open source service for visualizing a person’s health and their entire longitudinal, clinical and non-clinical health record. An elegant and beautiful design that will better perform with clinicians, patients, and care teams, to make faster, more informed decisions.`,
+    author: `@GoInvo`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,5 +30,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-sass`,
   ],
 }
