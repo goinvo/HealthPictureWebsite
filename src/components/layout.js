@@ -15,16 +15,6 @@ import Footer from './footer'
 import SEO from './seo'
 
 const Layout = (props) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <SEO />

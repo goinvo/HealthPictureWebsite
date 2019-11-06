@@ -1,10 +1,14 @@
 import React from "react"
 
 import Layout from '../components/layout'
+import Image from '../components/image'
 
 const ImplementationPage = (props) => (
   <Layout title="Explore the Health Picture.">
     <h2>View the Designs</h2>
+    <div style={{ maxWidth: '600px' }}>
+      <Image path="health-picture-sping.jpg" />
+    </div>
     <p>The layers that are driving the Health Picture are constantly being validated by continual feedback from users and organizations.</p>
     <p>They are to be shared, used, and critiqued to ensure that future health products are following the best design guidelines.</p>
     <h2>The service</h2>

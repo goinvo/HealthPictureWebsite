@@ -40,6 +40,26 @@ $positions: ('top','left','bottom','right');
   }
 }
 
+@each $index, $size in $sizes {
+  .mv-#{$index} {
+    margin-top: $size + rem;
+    margin-bottom: $size + rem;
+  }
+}
+
+@each $index, $size in $sizes {
+  .mh-#{$index} {
+    margin-left: $size + rem;
+    margin-right: $size + rem;
+  }
+}
+
+@each $index, $size in $sizes {
+  .mx-#{$index} {
+    margin: $size + rem;
+  }
+}
+
 .m-auto {
   margin: auto;
 }
